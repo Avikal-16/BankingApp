@@ -9,7 +9,7 @@ const ibmPlexSerif=IBM_Plex_Serif({
   variable: '--font-ibm-plex-serif'
 })
 export const metadata: Metadata = {
-  title: "Horizon",
+  title: "FinBuddy",
   description: "A Modern Banking Application for everyone",
   icons:{
     icon:'./icons/logo.svg'
