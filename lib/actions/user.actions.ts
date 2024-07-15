@@ -18,9 +18,9 @@ const {
 
 export const getUserInfo = async ({ userId }: getUserInfoProps) => {
   try {
-    const { database } = await createAdminClient();
+    const { databse } = await createAdminClient();
 
-    const user = await database.listDocuments(
+    const user = await databse.listDocuments(
       DATABASE_ID!,
       USER_COLLECTION_ID!,
       [Query.equal('userId', [userId])]
@@ -58,7 +58,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
   let newUserAccount;
 
   try {
-    const { account, database } = await createAdminClient();
+    const { account, databse } = await createAdminClient();
 
     newUserAccount = await account.create(
       ID.unique(), 
@@ -78,7 +78,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
 
     const dwollaCustomerId = extractCustomerIdFromUrl(dwollaCustomerUrl);
 
-    const newUser = await database.createDocument(
+    const newUser = await databse.createDocument(
       DATABASE_ID!,
       USER_COLLECTION_ID!,
       ID.unique(),
@@ -160,9 +160,9 @@ export const createBankAccount = async ({
   shareableId,
 }: createBankAccountProps) => {
   try {
-    const { database } = await createAdminClient();
+    const { databse } = await createAdminClient();
 
-    const bankAccount = await database.createDocument(
+    const bankAccount = await databse.createDocument(
       DATABASE_ID!,
       BANK_COLLECTION_ID!,
       ID.unique(),
@@ -246,9 +246,9 @@ export const exchangePublicToken = async ({
 
 export const getBanks = async ({ userId }: getBanksProps) => {
   try {
-    const { database } = await createAdminClient();
+    const { databse } = await createAdminClient();
 
-    const banks = await database.listDocuments(
+    const banks = await databse.listDocuments(
       DATABASE_ID!,
       BANK_COLLECTION_ID!,
       [Query.equal('userId', [userId])]
@@ -262,9 +262,9 @@ export const getBanks = async ({ userId }: getBanksProps) => {
 
 export const getBank = async ({ documentId }: getBankProps) => {
   try {
-    const { database } = await createAdminClient();
+    const { databse } = await createAdminClient();
 
-    const bank = await database.listDocuments(
+    const bank = await databse.listDocuments(
       DATABASE_ID!,
       BANK_COLLECTION_ID!,
       [Query.equal('$id', [documentId])]
@@ -278,9 +278,9 @@ export const getBank = async ({ documentId }: getBankProps) => {
 
 export const getBankByAccountId = async ({ accountId }: getBankByAccountIdProps) => {
   try {
-    const { database } = await createAdminClient();
+    const { databse } = await createAdminClient();
 
-    const bank = await database.listDocuments(
+    const bank = await databse.listDocuments(
       DATABASE_ID!,
       BANK_COLLECTION_ID!,
       [Query.equal('accountId', [accountId])]
